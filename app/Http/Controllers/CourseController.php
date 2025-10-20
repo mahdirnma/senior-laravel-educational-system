@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Repository\CourseRepository;
 use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
@@ -12,10 +13,11 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct(protected CourseRepository $repository){}
+
     public function index()
     {
-        $teacher=Auth::guard('teachers')->user();
-        $courses=$teacher->courses()->paginate(2);
+        $courses=$this->repository->all();
         return view('teachers.course.index',compact('courses'));
     }
 
