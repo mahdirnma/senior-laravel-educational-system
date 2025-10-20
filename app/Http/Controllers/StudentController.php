@@ -21,7 +21,7 @@ class StudentController extends Controller
         if (!Auth::guard('students')->attempt($myData)) {
             return redirect()->route('student.login.form');
         }
-        return redirect()->route('student.dashboard');
+        return redirect()->route('students.index');
     }
     public function logout(){
         Auth::guard('students')->logout();
