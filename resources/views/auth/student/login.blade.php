@@ -11,7 +11,7 @@
 <body>
 <div class="w-svw h-svh flex justify-center items-center bg-gray-200">
     <div class="w-2/6 h-5/6 bg-white rounded-xl flex flex-col items-center justify-start">
-        <h1 class="text-3xl pt-8">ورود دانش آموزان</h1>
+        <h1 class="text-3xl pt-8">ورود دانشجویان</h1>
         <form action="{{route('student.login')}}" method="post" class="w-5/6 flex flex-col items-end justify-start mt-10">
             @csrf
             <label for="email" class="mt-10">ایمیل</label>

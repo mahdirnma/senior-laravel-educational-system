@@ -23,6 +23,10 @@ class StudentController extends Controller
         }
         return redirect()->route('student.dashboard');
     }
+    public function logout(){
+        Auth::guard('students')->logout();
+        return redirect()->route('student.login.form');
+    }
     public function index()
     {
         return view('student.dashboard');
