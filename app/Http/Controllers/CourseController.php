@@ -74,6 +74,10 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $status=$this->repository->delete($course);
+        if ($status) {
+            return redirect()->route('courses.index');
+        }
+        return redirect()->back();
     }
 }
