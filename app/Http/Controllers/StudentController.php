@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginStudentRequest;
+use App\Models\Lesson;
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
@@ -27,6 +28,7 @@ class StudentController extends Controller
         Auth::guard('students')->logout();
         return redirect()->route('student.login.form');
     }
+
     public function index()
     {
         return view('student.dashboard');

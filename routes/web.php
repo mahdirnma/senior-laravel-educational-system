@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -11,11 +12,13 @@ Route::get('teacher/login', [TeacherController::class,'loginForm'])->name('teach
 Route::post('teacher/login', [TeacherController::class,'login'])->name('teacher.login');
 Route::middleware('auth:students')->group(function () {
     Route::resource('students', StudentController::class);
+//    Route::get('students/lessons', [StudentController::class,'lessons'])->name('students.lessons');
     Route::post('student/logout', [StudentController::class,'logout'])->name('student.logout');
 });
 Route::middleware('auth:teachers')->group(function () {
     Route::resource('teachers', TeacherController::class);
     Route::resource('courses', CourseController::class);
+    Route::get('teacher/lessons', [LessonController::class, 'teacherLessons'])->name('teacher.lessons');
     Route::post('teacher/logout', [TeacherController::class,'logout'])->name('teacher.logout');
 });
 

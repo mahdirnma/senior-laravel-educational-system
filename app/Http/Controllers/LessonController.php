@@ -8,9 +8,12 @@ use App\Http\Requests\UpdateLessonRequest;
 
 class LessonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function teacherLessons()
+    {
+        $lessons = Lesson::where('is_active',1)->paginate(2);
+        return view('teachers.lesson.index',compact('lessons'));
+    }
+
     public function index()
     {
         //
