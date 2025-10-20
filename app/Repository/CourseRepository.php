@@ -26,7 +26,8 @@ class CourseRepository implements CourseRepositoryInterface
 
     public function update($data, $course): ?Course
     {
-        // TODO: Implement update() method.
+        $course->update($data);
+        return $course;
     }
 
     public function delete($course): bool
