@@ -13,6 +13,11 @@ class LessonController extends Controller
         $lessons = Lesson::where('is_active',1)->paginate(2);
         return view('teachers.lesson.index',compact('lessons'));
     }
+    public function studentLessons()
+    {
+        $lessons = Lesson::where('is_active',1)->paginate(2);
+        return view('student.lesson.index',compact('lessons'));
+    }
 
     public function index()
     {
