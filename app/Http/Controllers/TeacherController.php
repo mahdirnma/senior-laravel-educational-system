@@ -2,18 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginTeacherRequest;
 use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function loginForm()
+    {
+        return view('auth.teacher.login');
+    }
+
+    public function login(LoginTeacherRequest $request)
+    {
+        $myData = $request->only('email', 'password');
+        if (!Auth::guard('teachers')->attempt($myData)) {
+            return redirect()->route('teacher.login.form');
+        }
+        return redirect()->route('teachers.index');
+    }
+    public function logout(){
+        Auth::guard('teachers')->logout();
+        return redirect()->route('teacher.login.form');
+    }
     public function index()
     {
-        //
+        return view('teachers.dashboard');
     }
 
     /**
