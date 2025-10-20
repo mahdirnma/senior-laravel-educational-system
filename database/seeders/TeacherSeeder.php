@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Teacher;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class TeacherSeeder extends Seeder
         Teacher::create([
             'name' => 'reza',
             'email' => 'reza@gmail.com',
-            'password' => '123',
+            'password' => Hash::make('123'),
         ]);
 
     }

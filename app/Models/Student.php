@@ -12,4 +12,9 @@ class Student extends User
         'password',
         'is_active',
     ];
+
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class);
+    }
 }
