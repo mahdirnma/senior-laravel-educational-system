@@ -38,7 +38,7 @@
                                     <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
                                 </form>
                             </td>
-                            <td class="text-center">{{$task->year}}</td>
+                            <td class="text-center">{{$course->year}}</td>
                             <td class="text-center">{{$course->end_date}}</td>
                             <td class="text-center">{{$course->start_date}}</td>
                             <td class="text-center">{{$course->description}}</td>

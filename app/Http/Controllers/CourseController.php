@@ -24,7 +24,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('teachers.course.create');
     }
 
     /**
@@ -32,7 +32,13 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
+        $teacher=Auth::guard('teachers')->user();
+        $course=Course::create($request->all());
+        $teacher->courses()->attach($course);
+        if ($course) {
+            return redirect()->route('courses.index');
+        }
+        return redirect()->back();
     }
 
     /**
