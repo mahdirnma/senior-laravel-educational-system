@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LessonController extends Controller
 {
@@ -19,6 +20,12 @@ class LessonController extends Controller
         return view('student.lesson.index',compact('lessons'));
     }
 
+    public function studentLessonsStore(Lesson $lesson)
+    {
+        $student=Auth::guard('students')->user();
+        $student->lessons()->attach($lesson);
+        return redirect()->route('student.lessons');
+    }
     public function index()
     {
         //

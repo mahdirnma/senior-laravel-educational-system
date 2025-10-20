@@ -13,6 +13,7 @@ Route::post('teacher/login', [TeacherController::class,'login'])->name('teacher.
 Route::middleware('auth:students')->group(function () {
     Route::resource('students', StudentController::class);
     Route::get('student/lessons', [LessonController::class, 'studentLessons'])->name('student.lessons');
+    Route::post('student/lessons/{lesson}/store', [LessonController::class, 'studentLessonsStore'])->name('student.lessons.store');
     Route::post('student/logout', [StudentController::class,'logout'])->name('student.logout');
 });
 Route::middleware('auth:teachers')->group(function () {
