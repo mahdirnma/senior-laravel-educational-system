@@ -2,18 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginStudentRequest;
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function loginForm()
+    {
+        return view('auth.student.login');
+    }
+
+    public function login(LoginStudentRequest $request)
+    {
+        $myData=$request->only('email','password');
+        if (!Auth::guard('students')->attempt($myData)) {
+            return redirect()->route('student.login.form');
+        }
+        return redirect()->route('student.dashboard');
+    }
     public function index()
     {
-        //
+        return view('student.dashboard');
     }
 
     /**
