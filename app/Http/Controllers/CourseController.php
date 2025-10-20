@@ -34,9 +34,7 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        $teacher=Auth::guard('teachers')->user();
-        $course=Course::create($request->all());
-        $teacher->courses()->attach($course);
+        $course=$this->repository->create($request->validated());
         if ($course) {
             return redirect()->route('courses.index');
         }
