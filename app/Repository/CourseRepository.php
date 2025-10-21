@@ -30,9 +30,7 @@ class CourseRepository implements CourseRepositoryInterface
 
     public function delete($course): bool
     {
-        $teacher=Auth::guard('teachers')->user();
         $status=$course->update(['is_active'=>0]);
-        $teacher->courses()->detach($course);
         if($status){
             return true;
         }
