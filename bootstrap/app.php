@@ -12,16 +12,15 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-//        $middleware->redirectGuestsTo('teacher/login');
         $middleware->redirectGuestsTo(function (Request $request){
             if ($request->expectsJson()) {
                 return null;
             }
             if ($request->routeIs('teachers.*')){
-                return redirect()->route('teacher.login');
+                return route('teacher.login');
             }
             if ($request->routeIs('students.*')){
-                return redirect()->route('student.login');
+                return route('student.login');
             }
             return route('login');
         });
