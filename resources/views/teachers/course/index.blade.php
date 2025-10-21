@@ -36,7 +36,9 @@
                             <td class="text-center">
                                 <form action="{{route('courses.edit',compact('course'))}}" method="get">
                                     @csrf
-                                    <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
+                                    @can('manage-courses',compact('course'))
+                                        <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
+                                    @endcan
                                 </form>
                             </td>
                             <td class="text-center">{{$course->teachers[0]->name}}</td>
