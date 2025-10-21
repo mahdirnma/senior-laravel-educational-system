@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::define('manage-courses', function ($user,Course $course) {
             if ($user instanceof Teacher) {
-                if ($course->teachers[0]->id==$user->id){
+                if ($course->teacher->id==$user->id){
                     return true;
                 }
             }

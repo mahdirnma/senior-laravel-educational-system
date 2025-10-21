@@ -18,8 +18,7 @@ class CourseRepository implements CourseRepositoryInterface
     public function create($data): Course
     {
         $teacher=Auth::guard('teachers')->user();
-        $course=Course::create($data);
-        $teacher->courses()->attach($course);
+        $course=$teacher->courses()->create($data);
         return $course;
     }
 

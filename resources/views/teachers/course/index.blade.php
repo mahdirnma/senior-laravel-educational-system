@@ -41,7 +41,7 @@
                                     @endcan
                                 </form>
                             </td>
-                            <td class="text-center">{{$course->teachers[0]->name}}</td>
+                            <td class="text-center">{{$course->teacher->name}}</td>
                             <td class="text-center">{{$course->year}}</td>
                             <td class="text-center">{{$course->end_date}}</td>
                             <td class="text-center">{{$course->start_date}}</td>
