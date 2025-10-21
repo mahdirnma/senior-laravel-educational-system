@@ -16,6 +16,7 @@
             @auth('teachers')
             <nav>
                 <ul class="flex flex-row-reverse">
+                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('teachers.all')}}">all teachers</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('courses.index')}}">courses</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('lessons')}}">all lessons</a></li>
                 </ul>

@@ -32,6 +32,11 @@ class TeacherController extends Controller
         return view('teachers.dashboard');
     }
 
+    public function all()
+    {
+        $teachers = Teacher::where('is_active', 1)->paginate(2);
+        return view('teachers.all', compact('teachers'));
+    }
     /**
      * Show the form for creating a new resource.
      */
