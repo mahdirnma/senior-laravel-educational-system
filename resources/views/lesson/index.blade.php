@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.app3')
 @section('title')
     lessons
 @endsection
@@ -13,7 +13,6 @@
                 <table class="w-full min-h-full border border-gray-400">
                     <thead>
                     <tr class="h-12 border border-gray-400 border-b-2 border-b-gray-400">
-                        <td class="text-center">choosing this lesson</td>
                         <td class="text-center">course</td>
                         <td class="text-center">capacity</td>
                         <td class="text-center">description</td>
@@ -23,12 +22,6 @@
                     <tbody>
                     @foreach($lessons as $lesson)
                         <tr>
-                            <td class="text-center">
-                                <form action="{{route('student.lessons.store',compact('lesson'))}}" method="post">
-                                    @csrf
-                                    <button type="submit" class="text-green-700 cursor-pointer">choose</button>
-                                </form>
-                            </td>
                             <td class="text-center">{{$lesson->course->title}}</td>
                             <td class="text-center">{{$lesson->capacity}}</td>
                             <td class="text-center">{{$lesson->description}}</td>

@@ -12,14 +12,17 @@ Route::get('teacher/login', [TeacherController::class,'loginForm'])->name('teach
 Route::post('teacher/login', [TeacherController::class,'login'])->name('teacher.login');
 Route::middleware('auth:students')->group(function () {
     Route::resource('students', StudentController::class);
-    Route::get('student/lessons', [LessonController::class, 'studentLessons'])->name('student.lessons');
+    Route::get('student/lessons/profile', [LessonController::class, 'studentLessonsProfile'])->name('student.lessons.profile');
     Route::post('student/lessons/{lesson}/store', [LessonController::class, 'studentLessonsStore'])->name('student.lessons.store');
     Route::post('student/logout', [StudentController::class,'logout'])->name('student.logout');
 });
 Route::middleware('auth:teachers')->group(function () {
     Route::resource('teachers', TeacherController::class);
     Route::resource('courses', CourseController::class);
-    Route::get('teacher/lessons', [LessonController::class, 'teacherLessons'])->name('teacher.lessons');
     Route::post('teacher/logout', [TeacherController::class,'logout'])->name('teacher.logout');
 });
+Route::middleware('auth:students,teachers')->group(function () {
+    Route::get('lessons', [LessonController::class, 'Lessons'])->name('lessons');
+});
+
 

@@ -9,15 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class LessonController extends Controller
 {
-    public function teacherLessons()
+    public function lessons()
     {
         $lessons = Lesson::where('is_active',1)->paginate(2);
-        return view('teachers.lesson.index',compact('lessons'));
-    }
-    public function studentLessons()
-    {
-        $lessons = Lesson::where('is_active',1)->paginate(2);
-        return view('student.lesson.index',compact('lessons'));
+        return view('lesson.index',compact('lessons'));
     }
 
     public function studentLessonsStore(Lesson $lesson)
@@ -25,6 +20,13 @@ class LessonController extends Controller
         $student=Auth::guard('students')->user();
         $student->lessons()->attach($lesson);
         return redirect()->route('student.lessons');
+    }
+
+    public function studentLessonsProfile()
+    {
+        $student=Auth::guard('students')->user();
+        $lessons=$student->lessons()->paginate(2);
+        return view('student.lesson.profile.index',compact('lessons'));
     }
     public function index()
     {
