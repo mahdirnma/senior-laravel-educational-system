@@ -12,6 +12,7 @@ class Course extends Model
         'start_date',
         'end_date',
         'year',
+        'teacher_id',
         'is_active',
     ];
 
@@ -20,8 +21,8 @@ class Course extends Model
         return $this->hasMany(Lesson::class);
     }
 
-    public function teachers()
+    public function teacher()
     {
-        return $this->belongsToMany(Teacher::class);
+        return $this->belongsTo(Teacher::class);
     }
 }

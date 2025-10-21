@@ -19,6 +19,7 @@ class CourseSeeder extends Seeder
             'start_date' => '2025-11-02',
             'end_date' => '2026-3-15',
             'year' => '2025',
+            'teacher_id' => 1,
         ]);
         Course::create([
             'title' => 'course 2',
@@ -26,6 +27,7 @@ class CourseSeeder extends Seeder
             'start_date' => '2025-11-02',
             'end_date' => '2026-3-15',
             'year' => '2025',
+            'teacher_id' => 2,
         ]);
 
 
