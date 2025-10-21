@@ -11,8 +11,7 @@ class CourseRepository implements CourseRepositoryInterface
 
     public function all()
     {
-        $teacher=Auth::guard('teachers')->user();
-        $courses=$teacher->courses()->paginate(2);
+        $courses=Course::where('is_active',1)->paginate(2);
         return $courses;
     }
 

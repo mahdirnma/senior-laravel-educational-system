@@ -22,7 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->routeIs('students.*')){
                 return route('student.login');
             }
-            return route('login');
+            return route('student.login');
         });
     })
     ->withExceptions(function (Exceptions $exceptions): void {

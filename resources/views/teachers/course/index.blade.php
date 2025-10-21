@@ -15,6 +15,7 @@
                     <tr class="h-12 border border-gray-400 border-b-2 border-b-gray-400">
                         <td class="text-center">delete</td>
                         <td class="text-center">update</td>
+                        <td class="text-center">teacher</td>
                         <td class="text-center">year</td>
                         <td class="text-center">end date</td>
                         <td class="text-center">start date</td>
@@ -38,6 +39,7 @@
                                     <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
                                 </form>
                             </td>
+                            <td class="text-center">{{$course->teachers[0]->name}}</td>
                             <td class="text-center">{{$course->year}}</td>
                             <td class="text-center">{{$course->end_date}}</td>
                             <td class="text-center">{{$course->start_date}}</td>
