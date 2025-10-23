@@ -15,6 +15,10 @@
                 <table class="w-full min-h-full border border-gray-400">
                     <thead>
                     <tr class="h-12 border border-gray-400 border-b-2 border-b-gray-400">
+                        @auth('teachers')
+                            <td class="text-center">delete lesson</td>
+                            <td class="text-center">update lesson</td>
+                        @endauth
                         @auth('students')
                             <td class="text-center">choose lesson</td>
                         @endauth
@@ -33,12 +37,27 @@
                             <td class="text-center">
                                 <form action="{{route('student.lessons.store',compact('lesson'))}}" method="post">
                                     @csrf
-                                    <button type="submit"
-                                            class="text-green-700 cursor-pointer">choose
-                                    </button>
+                                    <button type="submit" class="text-green-700 cursor-pointer">choose</button>
                                 </form>
                             </td>
                             @endauth
+                                    <td class="text-center">
+                                        @can('teacher-lesson',$lesson)
+                                        <form action="{{route('lessons.destroy',compact('lesson'))}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="text-green-700 cursor-pointer">delete</button>
+                                        </form>
+                                        @endcan
+                                    </td>
+                                    <td class="text-center">
+                                        @can('teacher-lesson',$lesson)
+                                        <form action="{{route('lessons.edit',compact('lesson'))}}" method="get">
+                                            @csrf
+                                            <button type="submit" class="text-green-700 cursor-pointer">update</button>
+                                        </form>
+                                        @endcan
+                                    </td>
                             <td class="text-center">{{$lesson->field->title}}</td>
                             <td class="text-center">{{$lesson->course->title}}</td>
                             <td class="text-center">{{$lesson->capacity}}</td>

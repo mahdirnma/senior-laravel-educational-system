@@ -71,7 +71,8 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        //
+        $courses=Course::where('is_active',1)->get();
+        return view('lesson.edit',compact('lesson','courses'));
     }
 
     /**
@@ -79,7 +80,11 @@ class LessonController extends Controller
      */
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
-        //
+        $status=$lesson->update($request->all());
+        if($status){
+            return redirect()->route('lessons');
+        }
+        return redirect()->route('lessons.edit');
     }
 
     /**
@@ -87,6 +92,7 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->update(['is_active'=>0]);
+        return redirect()->route('lessons');
     }
 }
