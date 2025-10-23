@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
+use App\Models\Student;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Support\Facades\Auth;
 
 class LessonController extends Controller

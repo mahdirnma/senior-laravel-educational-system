@@ -16,6 +16,7 @@
                         @auth('students')
                             <td class="text-center">choose lesson</td>
                         @endauth
+                        <td class="text-center">field</td>
                         <td class="text-center">course</td>
                         <td class="text-center">capacity</td>
                         <td class="text-center">description</td>
@@ -24,7 +25,9 @@
                     </thead>
                     <tbody>
                     @foreach($lessons as $lesson)
+                        @can('manage-lessons',$lesson)
                         <tr>
+                            @auth('students')
                             <td class="text-center">
                                 <form action="{{route('student.lessons.store',compact('lesson'))}}" method="post">
                                     @csrf
@@ -33,11 +36,14 @@
                                     </button>
                                 </form>
                             </td>
+                            @endauth
+                            <td class="text-center">{{$lesson->field->title}}</td>
                             <td class="text-center">{{$lesson->course->title}}</td>
                             <td class="text-center">{{$lesson->capacity}}</td>
                             <td class="text-center">{{$lesson->description}}</td>
                             <td class="text-center">{{$lesson->title}}</td>
                         </tr>
+                        @endcan
                     @endforeach
                     </tbody>
                 </table>
