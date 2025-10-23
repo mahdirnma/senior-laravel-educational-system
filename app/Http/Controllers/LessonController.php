@@ -19,7 +19,7 @@ class LessonController extends Controller
     {
         $student=Auth::guard('students')->user();
         $student->lessons()->attach($lesson);
-        return redirect()->route('student.lessons');
+        return redirect()->route('student.lessons.profile');
     }
 
     public function studentLessonsProfile()

@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teachers', function (Blueprint $table) {
+        Schema::create('fields', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-//            $table->foreignId('field_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->string('title');
+            $table->text('description');
+            $table->integer('unitNumber');
+            $table->string('branch');
+            $table->string('type');
             $table->boolean('is_active')->default(true);
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teachers');
+        Schema::dropIfExists('fields');
     }
 };

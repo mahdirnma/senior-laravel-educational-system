@@ -10,11 +10,15 @@ class Student extends User
         'name',
         'email',
         'password',
+        'field_id',
         'is_active',
     ];
 
     public function lessons()
     {
         return $this->belongsToMany(Lesson::class);
+    }
+    public function field(){
+        return $this->belongsTo(Field::class);
     }
 }
