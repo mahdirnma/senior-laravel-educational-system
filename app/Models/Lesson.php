@@ -11,6 +11,7 @@ class Lesson extends Model
         'description',
         'capacity',
         'course_id',
+        'field_id',
         'is_active',
     ];
     public function course(){

@@ -19,6 +19,7 @@ Route::middleware('auth:students')->group(function () {
 Route::middleware('auth:teachers')->group(function () {
     Route::resource('teachers', TeacherController::class);
     Route::resource('courses', CourseController::class);
+    Route::resource('lessons', LessonController::class);
     Route::get('teacher/all', [TeacherController::class, 'all'])->name('teachers.all');
     Route::get('teacher/{teacher}/field', [TeacherController::class, 'field'])->name('teachers.field');
     Route::post('teacher/logout', [TeacherController::class,'logout'])->name('teacher.logout');
