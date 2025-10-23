@@ -27,6 +27,12 @@ class TeacherController extends Controller
         Auth::guard('teachers')->logout();
         return redirect()->route('teacher.login.form');
     }
+
+    public function field(Teacher $teacher)
+    {
+        $field=$teacher->field;
+        return view('teachers.field',compact('field'));
+    }
     public function index()
     {
         return view('teachers.dashboard');

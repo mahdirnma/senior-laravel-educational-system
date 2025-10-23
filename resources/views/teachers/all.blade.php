@@ -19,6 +19,7 @@
                         <td class="text-center">delete</td>
                         <td class="text-center">update</td>
 --}}
+                        <td class="text-center">field</td>
                         <td class="text-center">email</td>
                         <td class="text-center">name</td>
                     </tr>
@@ -43,6 +44,12 @@
                                 </form>
                             </td>
 --}}
+                            <td class="text-center">
+                                <form action="{{route('teachers.field',compact('teacher'))}}" method="get">
+                                    @csrf
+                                    <button type="submit" class="text-green-600 cursor-pointer">{{$teacher->field->title}}</button>
+                                </form>
+                            </td>
                             <td class="text-center">{{$teacher->email}}</td>
                             <td class="text-center">{{$teacher->name}}</td>
                         </tr>
