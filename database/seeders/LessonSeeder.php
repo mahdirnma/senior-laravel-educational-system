@@ -18,12 +18,14 @@ class LessonSeeder extends Seeder
             'description' => 'lorem ipsum 1',
             'capacity' => '25',
             'course_id' => '1',
+            'field_id' => '1',
         ]);
         Lesson::create([
             'title' => 'lesson 2',
             'description' => 'lorem ipsum 2',
             'capacity' => '30',
             'course_id' => '2',
+            'field_id' => '2',
         ]);
 
     }

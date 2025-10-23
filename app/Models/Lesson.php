@@ -21,4 +21,7 @@ class Lesson extends Model
     {
         return $this->belongsToMany(Student::class);
     }
+    public function field(){
+        return $this->belongsTo(Field::class);
+    }
 }

@@ -11,7 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('teachers', function (Blueprint $table) {
+        Schema::table('lessons', function (Blueprint $table) {
+//            $table->foreignId('field_id')->after('field_id')->references('id')->on('fields')->onDelete('cascade');
             $table->foreignId('field_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -21,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('teachers', function (Blueprint $table) {
-            $table->dropForeign('teachers_field_id_foreign');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->dropForeign('lessons_field_id_foreign');
         });
     }
 };

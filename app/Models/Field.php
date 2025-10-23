@@ -24,4 +24,9 @@ class Field extends Model
     {
         return $this->hasMany(Teacher::class);
     }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }
